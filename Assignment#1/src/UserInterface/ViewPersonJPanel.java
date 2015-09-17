@@ -76,80 +76,91 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
         lblLastName = new javax.swing.JLabel();
         txtPhoneNumber = new javax.swing.JTextField();
 
-        lblMiddleName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblMiddleName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblMiddleName.setText("Middle Name");
 
-        comboGender.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        comboGender.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         comboGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
 
-        lblName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblName.setText("Name");
 
-        txtZipCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtZipCode.setEditable(false);
+        txtZipCode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        lbldateOfBirth.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lbldateOfBirth.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lbldateOfBirth.setText("Date Of Birth");
 
-        lblGender.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblGender.setText("Gender");
 
-        lblStreetAddress.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblStreetAddress.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblStreetAddress.setText("Street Address");
 
-        lblZipCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblZipCode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblZipCode.setText("ZipCode");
 
-        lblTown.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblTown.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblTown.setText("Town");
 
-        txtFirstName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtFirstName.setEditable(false);
+        txtFirstName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtLastName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtLastName.setEditable(false);
+        txtLastName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtMiddleName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtMiddleName.setEditable(false);
+        txtMiddleName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         txtMiddleName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMiddleNameActionPerformed(evt);
             }
         });
 
-        txtDateOfBirth.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtDateOfBirth.setEditable(false);
+        txtDateOfBirth.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtStreetAddress.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtStreetAddress.setEditable(false);
+        txtStreetAddress.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtTown.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtTown.setEditable(false);
+        txtTown.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        lblOccupation.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblOccupation.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblOccupation.setText("Occupation");
 
-        lblEmailAddress.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblEmailAddress.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblEmailAddress.setText("Email Address");
 
-        lblContactDetails.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblContactDetails.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblContactDetails.setText("Contact Details");
 
-        lblAreaCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblAreaCode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblAreaCode.setText("Area Code");
 
-        lblPhoneNumber.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblPhoneNumber.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblPhoneNumber.setText("Phone Number");
 
-        lblCreateProfile.setFont(new java.awt.Font("Calibri", 3, 18)); // NOI18N
+        lblCreateProfile.setFont(new java.awt.Font("Cambria", 3, 18)); // NOI18N
         lblCreateProfile.setText("View Profile");
 
-        txtOccupation.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtOccupation.setEditable(false);
+        txtOccupation.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        lblFirstName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblFirstName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblFirstName.setText("First Name");
 
-        txtEmailAddress.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtEmailAddress.setEditable(false);
+        txtEmailAddress.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        txtAreaCode.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtAreaCode.setEditable(false);
+        txtAreaCode.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        lblLastName.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        lblLastName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblLastName.setText("Last Name");
 
-        txtPhoneNumber.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        txtPhoneNumber.setEditable(false);
+        txtPhoneNumber.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,18 +181,6 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
                         .addGap(14, 14, 14)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFirstName))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLastName)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMiddleName)))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(txtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblGender)
@@ -191,46 +190,60 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
                         .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblAreaCode))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPhoneNumber)
-                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
-                                .addComponent(lblEmailAddress)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtStreetAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(16, 16, 16)
                                 .addComponent(lblTown)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTown, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
+                                .addComponent(txtTown, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblZipCode)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                                .addComponent(txtZipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtOccupation, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblAreaCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtAreaCode)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblPhoneNumber)
+                                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblEmailAddress)
+                                        .addGap(18, 18, Short.MAX_VALUE)
+                                        .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCreateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblFirstName))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLastName)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMiddleName))))
+                .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(173, 173, 173)
-                            .addComponent(lblCreateProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(304, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(Seperator)
-                            .addContainerGap()))))
+                    .addComponent(Seperator)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addContainerGap()
+                .addComponent(lblCreateProfile)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -273,14 +286,12 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
                     .addComponent(lblContactDetails)
                     .addComponent(txtAreaCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(lblCreateProfile)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(Seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(400, Short.MAX_VALUE)))
+                    .addGap(51, 51, 51)
+                    .addComponent(Seperator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(401, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
