@@ -31,12 +31,13 @@ public class MainJFrame extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         btnCreate = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnCreate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnCreate.setText("Create ");
+        btnCreate.setText("Create  Patient");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
@@ -44,10 +45,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnView.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnView.setText("View ");
+        btnView.setText("View  Patient");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -55,21 +64,24 @@ public class MainJFrame extends javax.swing.JFrame {
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreate))
-                .addGap(29, 29, 29))
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(61, 61, 61)
                 .addComponent(btnCreate)
-                .addGap(57, 57, 57)
+                .addGap(55, 55, 55)
                 .addComponent(btnView)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnLogout)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftPanel);
@@ -105,6 +117,10 @@ public class MainJFrame extends javax.swing.JFrame {
         ViewJPanel viewJPanel = new ViewJPanel(patient);
         splitPane.setRightComponent(viewJPanel);
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnView;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel rightPanel;

@@ -14,11 +14,12 @@ public class Patient {
    private int age;
    private String primaryDocName;
    private String preferredPharmacy;
-   private ArrayList<VitalSign> vitalSignHistory;
-   
+   //private ArrayList<VitalSign> vitalSignHistory;
+   public VitalSignHistory vitalSignHistory;
    
     public Patient(){
-        vitalSignHistory = new ArrayList<>();
+        //vitalSignHistory = new ArrayList<>();
+        vitalSignHistory = new VitalSignHistory();
     }    
 
     public String getPatientName() {
@@ -61,7 +62,7 @@ public class Patient {
         this.preferredPharmacy = preferredPharmacy;
     }
 
-    public ArrayList<VitalSign> getVitalSignHistory() {
+    /*public ArrayList<VitalSign> getVitalSignHistory() {
         return vitalSignHistory;
     }
 
@@ -78,6 +79,14 @@ public class Patient {
     public void removeVitalSign(VitalSign vitalSign){
         vitalSignHistory.remove(vitalSign);
     }
-     
+  */   
+
+    public VitalSignHistory getVitalSignHistory() {
+        return vitalSignHistory;
+    }
+
+    public void setVitalSignHistory(VitalSignHistory vitalSignHistory) {
+        this.vitalSignHistory = vitalSignHistory;
+    }
 
 }

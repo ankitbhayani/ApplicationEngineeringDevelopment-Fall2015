@@ -25,6 +25,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtRespiratoryRate.setEnabled(false);
         txtWeight.setEnabled(false);
         btnCreateVitalSign.setEnabled(false);
+        
     }
 
     /**
@@ -48,7 +49,6 @@ public class CreateJPanel extends javax.swing.JPanel {
         btnCreateVitalSign = new javax.swing.JButton();
         lblPreferredPharmacy = new javax.swing.JLabel();
         txtPreferredPharmacy = new javax.swing.JTextField();
-        lblGender = new javax.swing.JLabel();
         btnCreatePatient = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         lblRespiratoryRate = new javax.swing.JLabel();
@@ -60,6 +60,8 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtHeartRate = new javax.swing.JTextField();
         txtWeight = new javax.swing.JTextField();
         lblCreate1 = new javax.swing.JLabel();
+        lblVitalSignStatus = new javax.swing.JLabel();
+        lblPatientStatus = new javax.swing.JLabel();
 
         lblCreate.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         lblCreate.setText("Patient Personal Details");
@@ -77,17 +79,27 @@ public class CreateJPanel extends javax.swing.JPanel {
         lblPrimaryDoctorName.setText("Primary Doctor Name");
 
         txtPatientName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        txtPatientName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPatientNameActionPerformed(evt);
+        txtPatientName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPatientNameKeyTyped(evt);
             }
         });
 
         txtPatientId.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         txtAge.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAgeKeyTyped(evt);
+            }
+        });
 
         txtPrimaryDoctorName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtPrimaryDoctorName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrimaryDoctorNameKeyTyped(evt);
+            }
+        });
 
         btnCreateVitalSign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnCreateVitalSign.setText("Create VitalSign");
@@ -102,11 +114,8 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         txtPreferredPharmacy.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
-        lblGender.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lblGender.setText("Gender");
-
         btnCreatePatient.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnCreatePatient.setText("Resgister Patient");
+        btnCreatePatient.setText("Register Patient");
         btnCreatePatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreatePatientActionPerformed(evt);
@@ -126,15 +135,41 @@ public class CreateJPanel extends javax.swing.JPanel {
         lblWeight.setText("Weight (in Pounds)");
 
         txtSystolicBloodPressure.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtSystolicBloodPressure.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSystolicBloodPressureKeyTyped(evt);
+            }
+        });
 
         txtRespiratoryRate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtRespiratoryRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRespiratoryRateKeyTyped(evt);
+            }
+        });
 
         txtHeartRate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtHeartRate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHeartRateKeyTyped(evt);
+            }
+        });
 
         txtWeight.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWeightKeyTyped(evt);
+            }
+        });
 
         lblCreate1.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         lblCreate1.setText("Vital Sign Information");
+
+        lblVitalSignStatus.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        lblVitalSignStatus.setForeground(new java.awt.Color(204, 0, 0));
+
+        lblPatientStatus.setFont(new java.awt.Font("Calibri", 3, 14)); // NOI18N
+        lblPatientStatus.setForeground(new java.awt.Color(204, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -166,44 +201,47 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addGap(227, 227, 227)
                                 .addComponent(btnCreateVitalSign))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(btnCreatePatient))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPatientName)
                                     .addComponent(lblPreferredPharmacy)
                                     .addComponent(lblPatientId))
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPatientId, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                                    .addComponent(txtPatientId)
                                     .addComponent(txtPreferredPharmacy)
-                                    .addComponent(txtPatientName))
+                                    .addComponent(txtPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblGender)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblPrimaryDoctorName)
-                                            .addComponent(lblAge))
-                                        .addGap(21, 21, 21)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtPrimaryDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(59, 59, 59))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(lblCreate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(btnCreatePatient))
+                                    .addComponent(lblPrimaryDoctorName)
+                                    .addComponent(lblAge))
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPrimaryDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(240, 240, 240)
-                        .addComponent(lblCreate1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVitalSignStatus)
+                            .addComponent(lblCreate1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPatientStatus)
+                            .addComponent(lblCreate))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(lblCreate)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addComponent(lblPatientStatus)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -212,11 +250,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPatientId)
-                            .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPreferredPharmacy)
-                            .addComponent(txtPreferredPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAge)
@@ -224,16 +258,18 @@ public class CreateJPanel extends javax.swing.JPanel {
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPrimaryDoctorName)
-                            .addComponent(txtPrimaryDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblGender)))
+                            .addComponent(txtPrimaryDoctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPreferredPharmacy)
+                    .addComponent(txtPreferredPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCreatePatient)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCreate1)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRespiratoryRate)
                     .addComponent(txtRespiratoryRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,69 +283,82 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtSystolicBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(btnCreateVitalSign)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblVitalSignStatus)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientNameActionPerformed
-
     private void btnCreateVitalSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateVitalSignActionPerformed
         
-        String tStamp = String.valueOf(new Timestamp(System.currentTimeMillis()));
-        float respiRate = Float.valueOf(txtRespiratoryRate.getText());
-        float hrtRate = Float.valueOf(txtHeartRate.getText());
-        float sysBP = Float.valueOf(txtSystolicBloodPressure.getText());
-        float wt = Float.valueOf(txtWeight.getText());
-        int age = Integer.valueOf(txtAge.getText());
-        
-        VitalSign vitalSign = patient.addVitalSign();
-        
-        if(age>=1 && age<=3){
-            if((respiRate>=20 && respiRate<=30) && (hrtRate>=80 && hrtRate<=130) &&
-               (sysBP>=80 && sysBP<=110) && (wt>=22 && wt<=31)){
-                JOptionPane.showMessageDialog(null, "Inside Toddler");
-                vitalSign.setState("NORMAL");
+        if(!(txtRespiratoryRate.getText().isEmpty() || txtHeartRate.getText().isEmpty() ||
+              txtSystolicBloodPressure.getText().isEmpty() || txtWeight.getText().isEmpty())){
+           
+            String tStamp = String.valueOf(new Timestamp(System.currentTimeMillis()));
+            float respiRate = Float.valueOf(txtRespiratoryRate.getText());
+            float hrtRate = Float.valueOf(txtHeartRate.getText());
+            float sysBP = Float.valueOf(txtSystolicBloodPressure.getText());
+            float wt = Float.valueOf(txtWeight.getText());
+            int age = Integer.valueOf(txtAge.getText());
+
+            VitalSign vitalSign = patient.vitalSignHistory.addVitalSign();
+
+
+            if(age>=1 && age<=3){
+                if((respiRate>=20 && respiRate<=30) && (hrtRate>=80 && hrtRate<=130) &&
+                   (sysBP>=80 && sysBP<=110) && (wt>=22 && wt<=31)){
+                  //  JOptionPane.showMessageDialog(null, "Inside Toddler");
+                    vitalSign.setState("NORMAL");
+                }
+                else {vitalSign.setState("ABNORMAL");}
             }
-            else {vitalSign.setState("ABNORMAL");}
-        }
-        else if(age>=4 && age<=5){
-            if((respiRate>=20 && respiRate<=30) && (hrtRate>=80 && hrtRate<=120) &&
-               (sysBP>=80 && sysBP<=110) && (wt>=31 && wt<=40)){
-                JOptionPane.showMessageDialog(null, "Inside Preschooler");
-                vitalSign.setState("NORMAL");
+            else if(age>=4 && age<=5){
+                if((respiRate>=20 && respiRate<=30) && (hrtRate>=80 && hrtRate<=120) &&
+                   (sysBP>=80 && sysBP<=110) && (wt>=31 && wt<=40)){
+                  //  JOptionPane.showMessageDialog(null, "Inside Preschooler");
+                    vitalSign.setState("NORMAL");
+                }
+                else {vitalSign.setState("ABNORMAL");}
             }
-            else {vitalSign.setState("ABNORMAL");}
-        }
-        else if(age>=6 && age<=12){
-            if((respiRate>=20 && respiRate<=30) && (hrtRate>=70 && hrtRate<=110) &&
-               (sysBP>=80 && sysBP<=120) && (wt>=41 && wt<=92)){
-                JOptionPane.showMessageDialog(null, "Inside School Age");
-                vitalSign.setState("NORMAL");
+            else if(age>=6 && age<=12){
+                if((respiRate>=20 && respiRate<=30) && (hrtRate>=70 && hrtRate<=110) &&
+                   (sysBP>=80 && sysBP<=120) && (wt>=41 && wt<=92)){
+                   // JOptionPane.showMessageDialog(null, "Inside School Age");
+                    vitalSign.setState("NORMAL");
+                }
+                else {vitalSign.setState("ABNORMAL");}
             }
-            else {vitalSign.setState("ABNORMAL");}
-        }
-        else if(age>=13){
-            if((respiRate>=12 && respiRate<=20) && (hrtRate>=55 && hrtRate<=105) &&
-               (sysBP>=110 && sysBP<=120) && (wt>=110)){
-                JOptionPane.showMessageDialog(null, "Inside Adolescent");
-                vitalSign.setState("NORMAL");
+            else if(age>=13){
+                if((respiRate>=12 && respiRate<=20) && (hrtRate>=55 && hrtRate<=105) &&
+                   (sysBP>=110 && sysBP<=120) && (wt>=110)){
+                   // JOptionPane.showMessageDialog(null, "Inside Adolescent");
+                    vitalSign.setState("NORMAL");
+                }
+                else {vitalSign.setState("ABNORMAL");}
             }
-            else {vitalSign.setState("ABNORMAL");}
+
+            vitalSign.setRespiratoryRate(respiRate);
+            vitalSign.setHeartRate(hrtRate);
+            vitalSign.setSystolicBloodPressure(sysBP);
+            vitalSign.setWeight(wt);
+            vitalSign.setTimestamp(tStamp);
+
+            int dialogButton= JOptionPane.YES_NO_OPTION;
+            int dialogResult= JOptionPane.showConfirmDialog(null, "VitalSign Created Successfully! Do you want to create more?", "Question", dialogButton);
+
+            if (dialogResult==JOptionPane.YES_OPTION){resetFields();}
+            else {
+                txtHeartRate.setEnabled(false);
+                txtSystolicBloodPressure.setEnabled(false);
+                txtRespiratoryRate.setEnabled(false);
+                txtWeight.setEnabled(false);
+                btnCreateVitalSign.setEnabled(false);
+
+                lblPatientStatus.setText("Please goto the View section to see the details!");
+            }          
         }
+        else{ lblPatientStatus.setText("Spaces or Null in the one of the Input fields!");}
         
-        vitalSign.setRespiratoryRate(respiRate);
-        vitalSign.setHeartRate(hrtRate);
-        vitalSign.setSystolicBloodPressure(sysBP);
-        vitalSign.setWeight(wt);
-        vitalSign.setTimestamp(tStamp);
-        
-        int dialogButton= JOptionPane.YES_NO_OPTION;
-        int dialogResult= JOptionPane.showConfirmDialog(null, "VitalSign Created Successfully! Do you want to create more?", "Question", dialogButton);
-          
-        if (dialogResult==JOptionPane.YES_OPTION){resetFields();}
-        //else {}
                   
        
     }//GEN-LAST:event_btnCreateVitalSignActionPerformed
@@ -317,30 +366,73 @@ public class CreateJPanel extends javax.swing.JPanel {
     private void btnCreatePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePatientActionPerformed
         // TODO add your handling code here:
         
-        patient.setPatientName(txtPatientName.getText());
-        patient.setPatientId(txtPatientId.getText());
-        patient.setAge(Integer.valueOf(txtAge.getText()));
-        patient.setPrimaryDocName(txtPrimaryDoctorName.getText());
-        patient.setPreferredPharmacy(txtPreferredPharmacy.getText());
+        lblPatientStatus.setText("");
         
-        JOptionPane.showMessageDialog(null, "Patient Details logged into the system!");
-        
-        txtPatientName.setEnabled(false);
-        txtPatientId.setEnabled(false);
-        txtAge.setEnabled(false);
-        txtPrimaryDoctorName.setEnabled(false);
-        txtPreferredPharmacy.setEnabled(false);
-        btnCreatePatient.setEnabled(false);
-        
-        
-        txtHeartRate.setEnabled(true);
-        txtSystolicBloodPressure.setEnabled(true);
-        txtRespiratoryRate.setEnabled(true);
-        txtWeight.setEnabled(true);
-        btnCreateVitalSign.setEnabled(true);
-        
+        if(!(txtPatientName.getText().isEmpty() || 
+             txtPatientId.getText().isEmpty() || txtPatientId.getText().contains(" ") ||
+             txtAge.getText().isEmpty() || txtAge.getText().contains(" ") ||
+             txtPrimaryDoctorName.getText().isEmpty() || 
+             txtPreferredPharmacy.getText().isEmpty())){
+            
+            patient.setPatientName(txtPatientName.getText());
+            patient.setPatientId(txtPatientId.getText());
+            patient.setAge(Integer.valueOf(txtAge.getText()));
+            patient.setPrimaryDocName(txtPrimaryDoctorName.getText());
+            patient.setPreferredPharmacy(txtPreferredPharmacy.getText());
+
+            //JOptionPane.showMessageDialog(null, "Patient Details logged into the system!");
+            lblPatientStatus.setText("Patient Details logged into the system!");
+            //lblVitalSignStatus.setText("Patient Details logged into the system!");
+
+            txtPatientName.setEnabled(false);
+            txtPatientId.setEnabled(false);
+            txtAge.setEnabled(false);
+            txtPrimaryDoctorName.setEnabled(false);
+            txtPreferredPharmacy.setEnabled(false);
+            btnCreatePatient.setEnabled(false);
+
+
+            txtHeartRate.setEnabled(true);
+            txtSystolicBloodPressure.setEnabled(true);
+            txtRespiratoryRate.setEnabled(true);
+            txtWeight.setEnabled(true);
+            btnCreateVitalSign.setEnabled(true);
+
+        }
+        else{
+            //JOptionPane.showMessageDialog(null, "Spaces or Null");
+            lblPatientStatus.setText("Spaces or Null in the one of the Input fields!");
+        }
         
     }//GEN-LAST:event_btnCreatePatientActionPerformed
+
+    private void txtPatientNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPatientNameKeyTyped
+        numberCheck(evt);
+    }//GEN-LAST:event_txtPatientNameKeyTyped
+
+    private void txtPrimaryDoctorNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrimaryDoctorNameKeyTyped
+        numberCheck(evt);
+    }//GEN-LAST:event_txtPrimaryDoctorNameKeyTyped
+
+    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
+        characterCheck(evt);
+    }//GEN-LAST:event_txtAgeKeyTyped
+
+    private void txtRespiratoryRateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRespiratoryRateKeyTyped
+        characterCheck(evt);
+    }//GEN-LAST:event_txtRespiratoryRateKeyTyped
+
+    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
+        characterCheck(evt);
+    }//GEN-LAST:event_txtWeightKeyTyped
+
+    private void txtHeartRateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHeartRateKeyTyped
+        characterCheck(evt);
+    }//GEN-LAST:event_txtHeartRateKeyTyped
+
+    private void txtSystolicBloodPressureKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSystolicBloodPressureKeyTyped
+        characterCheck(evt);
+    }//GEN-LAST:event_txtSystolicBloodPressureKeyTyped
 
 
     public void resetFields(){
@@ -350,6 +442,32 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtWeight.setText("");
     }
     
+    
+    public void numberCheck(java.awt.event.KeyEvent e){
+         char ch = e.getKeyChar();
+            if (Character.isDigit(ch) && ch!=8 && ch!=46){
+                lblPatientStatus.setText("Please enter characters only!");
+                e.consume();
+            }
+            else
+                lblPatientStatus.setText("");
+                
+        
+    }
+    
+    public void characterCheck(java.awt.event.KeyEvent e){
+         char ch = e.getKeyChar();
+            if (!Character.isDigit(ch) && ch!=8 && ch!=46){
+                lblPatientStatus.setText("Please enter Numbers only!");
+                e.consume();
+            }
+            else{
+                lblPatientStatus.setText("");
+                //lblVitalSignStatus.setText("");
+            }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreatePatient;
     private javax.swing.JButton btnCreateVitalSign;
@@ -357,14 +475,15 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblCreate;
     private javax.swing.JLabel lblCreate1;
-    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblHeartRate;
     private javax.swing.JLabel lblPatientId;
     private javax.swing.JLabel lblPatientName;
+    private javax.swing.JLabel lblPatientStatus;
     private javax.swing.JLabel lblPreferredPharmacy;
     private javax.swing.JLabel lblPrimaryDoctorName;
     private javax.swing.JLabel lblRespiratoryRate;
     private javax.swing.JLabel lblSystolicBloodPressure;
+    private javax.swing.JLabel lblVitalSignStatus;
     private javax.swing.JLabel lblWeight;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtHeartRate;
