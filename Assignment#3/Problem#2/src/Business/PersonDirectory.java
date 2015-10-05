@@ -35,9 +35,10 @@ public class PersonDirectory {
     }
     
     public Person searchPersonByID(int ID){
-        for(Person person:personList){
-            if(person.getID() == ID);
+        for(Person person: personList){
+            if(person.getID() == ID){
             return person;
+            }
         }
         return null;
     }

@@ -168,6 +168,7 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
 
         btnBackToCreatePerson.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnBackToCreatePerson.setText("<<Back to Create Person");
+        btnBackToCreatePerson.setEnabled(false);
         btnBackToCreatePerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToCreatePersonActionPerformed(evt);

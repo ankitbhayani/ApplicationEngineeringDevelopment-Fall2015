@@ -220,9 +220,6 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(btnBackSearchAccountDetails))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -258,7 +255,10 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
                         .addComponent(btnUpdate))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(202, 202, 202)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(btnBackSearchAccountDetails)))
                 .addContainerGap(109, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -309,9 +309,9 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnBackSearchAccountDetails)
-                .addGap(66, 66, 66))
+                .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(56, 56, 56)
@@ -337,6 +337,18 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
+     lblPatientStatus.setText("");
+        
+        
+     if(!(txtAge.getText().isEmpty() || txtAge.getText().contains(" ") ||
+          txtzipCode.getText().isEmpty() || txtzipCode.getText().contains(" ") ||
+          txtoccupation.getText().isEmpty() || txtoccupation.getText().contains(" ") ||
+          txtemailAddress.getText().isEmpty() || txtemailAddress.getText().contains(" ") ||
+          txttown.getText().isEmpty() || txttown.getText().contains(" ") ||
+          txtmobileNumber.getText().isEmpty() || txtmobileNumber.getText().contains(" ") ||
+          txtpersonName.getText().isEmpty() || 
+          txtstreetAdress.getText().isEmpty())){  
+        
         person.setPersonName(txtpersonName.getText());
         person.setAge(Integer.valueOf(txtAge.getText()));
         person.setEmailAddress(txtemailAddress.getText());
@@ -350,6 +362,18 @@ public class ViewPersonJPanel extends javax.swing.JPanel {
         
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
+        
+        
+        userProcessContainer.add("ManageAccountJPanel",managePersonPatientJPanel);
+        CardLayout cardLayout = (CardLayout)userProcessContainer.getLayout();
+        cardLayout.next(userProcessContainer);
+     }
+     else{
+            //JOptionPane.showMessageDialog(null, "Spaces or Null");
+            lblPatientStatus.setText("Spaces or Null in the one of the Input fields!");
+        }
+        
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed

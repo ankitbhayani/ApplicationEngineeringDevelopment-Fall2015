@@ -220,9 +220,9 @@ public class ManagePersonPatientJPanel extends javax.swing.JPanel {
             }
             else if(person.isCheckPatient()){
                 Patient patient = patientDirectory.searchPatientByID(id);
-              //  JOptionPane.showMessageDialog(this, patient.getPatientId(),"Taking PatID here",JOptionPane.INFORMATION_MESSAGE);
+              
                 
-                ViewPatientJPanel viewPatientJPanel = new ViewPatientJPanel(userProcessContainer,patient,person);  
+                ViewPatientJPanel viewPatientJPanel = new ViewPatientJPanel(userProcessContainer,patient,person,this);  
                 userProcessContainer.add("ViewPatientJPanel", viewPatientJPanel);
                 CardLayout cardLayout = (CardLayout)userProcessContainer.getLayout();
                 cardLayout.next(userProcessContainer);
@@ -235,13 +235,18 @@ public class ManagePersonPatientJPanel extends javax.swing.JPanel {
       
         
         if (txtSeachPersonID.getText().isEmpty() || txtSeachPersonID.getText().contains(" ") ){
-            JOptionPane.showMessageDialog(this, "please enter an account nuber");
+            JOptionPane.showMessageDialog(this, "Please enter some value to search");
         }
         else{
+            
+            //JOptionPane.showMessageDialog(null,Integer.valueOf(txtSeachPersonID.getText()));
             Person person = personDirectory.searchPersonByID(Integer.valueOf(txtSeachPersonID.getText()));
+            
+            txtSeachPersonID.setText("");
             if(person !=null){
-                SearchPersonJPanel searchAccountJPanel = new SearchPersonJPanel(userProcessContainer,person);
-                userProcessContainer.add("SearchAccountJPanel",searchAccountJPanel);
+                              
+                SearchPersonJPanel searchPersonJPanel = new SearchPersonJPanel(userProcessContainer, person);
+                userProcessContainer.add("SearchPersonJPanel",searchPersonJPanel);
                 CardLayout cardLayout = (CardLayout)userProcessContainer.getLayout();
                 cardLayout.next(userProcessContainer);
             }
