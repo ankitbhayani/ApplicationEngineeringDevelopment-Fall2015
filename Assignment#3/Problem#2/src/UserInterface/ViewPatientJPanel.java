@@ -9,10 +9,23 @@ import Business.Patient;
 import Business.Person;
 import Business.VitalSign;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DatasetGroup;
+import org.jfree.data.general.DefaultKeyedValuesDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.statistics.DefaultMultiValueCategoryDataset;
 
 
 public class ViewPatientJPanel extends javax.swing.JPanel {
@@ -29,6 +42,9 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
     //JOptionPane.showMessageDialog(this, p.getPatientId());
     populateTable();
     populatePatientDetails(p);
+    
+    btnViewBars.setEnabled(false);
+    btnViewPieChart.setEnabled(false);
     }
 
    
@@ -73,7 +89,7 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
         lblCreate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVitalSigns = new javax.swing.JTable();
-        btnViewVitalSign = new javax.swing.JButton();
+        btnAddMoreVitalSign = new javax.swing.JButton();
         btnDeleteVitalSign = new javax.swing.JButton();
         lblWeight = new javax.swing.JLabel();
         txtSystolicBloodPressure = new javax.swing.JTextField();
@@ -94,6 +110,9 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
         txtPatientId = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         btnBackToPS = new javax.swing.JButton();
+        btnViewPieChart = new javax.swing.JButton();
+        btnUpdateVitalSign = new javax.swing.JButton();
+        btnViewBars = new javax.swing.JButton();
 
         lblCreate.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         lblCreate.setText("View Patient Details");
@@ -122,17 +141,22 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblVitalSigns.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVitalSignsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblVitalSigns);
         if (tblVitalSigns.getColumnModel().getColumnCount() > 0) {
             tblVitalSigns.getColumnModel().getColumn(0).setResizable(false);
             tblVitalSigns.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        btnViewVitalSign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        btnViewVitalSign.setText("View");
-        btnViewVitalSign.addActionListener(new java.awt.event.ActionListener() {
+        btnAddMoreVitalSign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnAddMoreVitalSign.setText("Add More");
+        btnAddMoreVitalSign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewVitalSignActionPerformed(evt);
+                btnAddMoreVitalSignActionPerformed(evt);
             }
         });
 
@@ -206,6 +230,30 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewPieChart.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnViewPieChart.setText("Pie Charts");
+        btnViewPieChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewPieChartActionPerformed(evt);
+            }
+        });
+
+        btnUpdateVitalSign.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnUpdateVitalSign.setText("Update");
+        btnUpdateVitalSign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateVitalSignActionPerformed(evt);
+            }
+        });
+
+        btnViewBars.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnViewBars.setText("Bar Graphs");
+        btnViewBars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewBarsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,11 +261,16 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(lblCreate))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAddMoreVitalSign)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnUpdateVitalSign)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteVitalSign)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnViewBars))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPatientName)
@@ -237,32 +290,31 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
                                     .addComponent(txtPrimaryDoctorName, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                                     .addComponent(txtAge)))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblWeight)
+                                            .addComponent(lblSystolicBloodPressure)
                                             .addComponent(lblHeartRate)
-                                            .addComponent(lblRespiratoryRate)
-                                            .addComponent(btnBackToPS))
-                                        .addGap(28, 28, 28)
+                                            .addComponent(lblRespiratoryRate))
+                                        .addGap(24, 24, 24)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtRespiratoryRate, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(54, 54, 54))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnViewVitalSign)
-                                        .addGap(85, 85, 85)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnDeleteVitalSign)
-                                    .addComponent(lblWeight)
-                                    .addComponent(lblSystolicBloodPressure))
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSystolicBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtSystolicBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(btnViewPieChart))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addGap(234, 234, 234)
+                        .addComponent(lblCreate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBackToPS)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,22 +344,15 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
                     .addComponent(lblPreferredPharmacy)
                     .addComponent(txtPreferredPharmacy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDeleteVitalSign, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnViewVitalSign))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblWeight)
-                            .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSystolicBloodPressure)
-                            .addComponent(txtSystolicBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4))
+                            .addComponent(btnAddMoreVitalSign)
+                            .addComponent(btnDeleteVitalSign)
+                            .addComponent(btnUpdateVitalSign)
+                            .addComponent(btnViewBars)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblRespiratoryRate)
@@ -315,14 +360,24 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblHeartRate)
-                            .addComponent(txtHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                            .addComponent(txtHeartRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblWeight)
+                            .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSystolicBloodPressure)
+                            .addComponent(txtSystolicBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnViewPieChart)))
+                .addGap(62, 62, 62)
                 .addComponent(btnBackToPS)
-                .addGap(24, 24, 24))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnViewVitalSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewVitalSignActionPerformed
+    private void btnAddMoreVitalSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMoreVitalSignActionPerformed
         int selectedRow = tblVitalSigns.getSelectedRow();
         
         if(selectedRow>=0){
@@ -337,7 +392,7 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
         }
         
                 
-    }//GEN-LAST:event_btnViewVitalSignActionPerformed
+    }//GEN-LAST:event_btnAddMoreVitalSignActionPerformed
 
     private void btnDeleteVitalSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteVitalSignActionPerformed
 
@@ -371,17 +426,149 @@ public class ViewPatientJPanel extends javax.swing.JPanel {
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackToPSActionPerformed
 
+    private void tblVitalSignsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVitalSignsMouseClicked
+        try{
+            
+            int selectedRow = tblVitalSigns.getSelectedRow();
+        
+             VitalSign vs = (VitalSign)tblVitalSigns.getValueAt(selectedRow, 0);
+             txtWeight.setText(String.valueOf(vs.getWeight()));
+             txtHeartRate.setText(String.valueOf(vs.getHeartRate()));
+             txtSystolicBloodPressure.setText(String.valueOf(vs.getSystolicBloodPressure()));
+             txtRespiratoryRate.setText(String.valueOf(vs.getRespiratoryRate()));
+        
+        /*if(selectedRow>=0){
+         int dialogButton= JOptionPane.YES_NO_OPTION;
+         int dialogResult= JOptionPane.showConfirmDialog(null, "Would you like to delete this?", "Warning", dialogButton);
+          
+         if (dialogResult==JOptionPane.YES_OPTION){
+             VitalSign vs = (VitalSign)tblVitalSigns.getValueAt(selectedRow, 0);
+             patient.vitalSignHistory.removeVitalSign(vs);
+             populateTable();
+             resetFields();
+          }
+        }
+        else{
+             JOptionPane.showMessageDialog(null, "Please select a row to delete!");
+        }*/
+            
+                btnViewBars.setEnabled(true);
+                btnViewPieChart.setEnabled(true);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_tblVitalSignsMouseClicked
+
+    private void btnViewPieChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPieChartActionPerformed
+        
+             String weight=txtWeight.getText();
+             String hrtRate=txtHeartRate.getText();
+             String bp=txtSystolicBloodPressure.getText();
+             String respiRate=txtRespiratoryRate.getText();
+             
+             DefaultPieDataset pieDataset = new DefaultPieDataset();
+            
+             pieDataset.setValue("Respiratory Rate", new Float(respiRate));
+             pieDataset.setValue("Heart Rate", new Float(hrtRate));
+             pieDataset.setValue("Blood Pressure", new Float(bp));
+             pieDataset.setValue("Weight", new Float(weight));
+             
+             JFreeChart chart = ChartFactory.createPieChart("Pie chart", pieDataset, true, true, true);
+             //JFreeChart chart = ChartFactory.createM("Pie chart", pieDataset, true, true, true);
+             
+             PiePlot P = (PiePlot)chart.getPlot();
+             
+             ChartFrame frame  = new ChartFrame("Pie Charrt",chart);
+             frame.setVisible(true);
+             frame.setSize(450, 500);
+                     
+             
+             
+    }//GEN-LAST:event_btnViewPieChartActionPerformed
+
+    private void btnUpdateVitalSignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateVitalSignActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateVitalSignActionPerformed
+
+    private void btnViewBarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBarsActionPerformed
+             
+        
+                
+             String weight=txtWeight.getText();
+             String hrtRate=txtHeartRate.getText();
+             String bp=txtSystolicBloodPressure.getText();
+             String respiRate=txtRespiratoryRate.getText();
+                
+             DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+             
+                    for(VitalSign vs: patient.vitalSignHistory.getVitalSignHistory()){
+                        
+                    dataset.addValue(vs.getRespiratoryRate(), vs.getTimestamp(), "Respiratory Rate");
+                    dataset.addValue(vs.getHeartRate(), vs.getTimestamp(), "Heart Rate");
+                    dataset.addValue(vs.getSystolicBloodPressure(), vs.getTimestamp(), "Blood Pressure");
+                    dataset.addValue(vs.getWeight(), vs.getTimestamp(), "Weight");
+                    /*dataset.addValue(4.0, series1, category2);
+                    dataset.addValue(3.0, series1, category3);
+                    dataset.addValue(5.0, series1, category4);
+                    dataset.addValue(5.0, series1, category5);
+
+                    dataset.addValue(5.0, series2, category1);
+                    dataset.addValue(7.0, series2, category2);
+                    dataset.addValue(6.0, series2, category3);
+                    dataset.addValue(8.0, series2, category4);
+                    dataset.addValue(4.0, series2, category5);
+
+                    dataset.addValue(4.0, series3, category1);
+                    dataset.addValue(3.0, series3, category2);
+                    dataset.addValue(2.0, series3, category3);
+                    dataset.addValue(3.0, series3, category4);
+                    dataset.addValue(6.0, series3, category5);*/
+                    }
+             //DefaultPieDataset pieDataset = new DefaultPieDataset();
+             //DefaultMultiValueCategoryDataset dataset = new DefaultMultiValueCategoryDataset();
+            // CategoryDataset dataset = new CategoryDataset();
+             //DatasetGroup datasetGroup = new DatasetGroup();
+             
+              //datasetGroup
+              // dataset.setGroup(dg);
+             //dataset.add(patient.vitalSignHistory.getVitalSignHistory(),"VitalSigns","Values");
+             /*dataset.setValue( new Float(respiRate),"Value","Respiratory Rate");
+             dataset.setValue( new Float(hrtRate),"Value","Heart Rate");
+             dataset.setValue( new Float(bp),"Value","Blood Pressure");
+             dataset.setValue( new Float(weight),"Value","Weight");*/
+             
+             //JFreeChart chart = ChartFactory.createPieChart("Pie chart", pieDataset, true, true, true);
+             JFreeChart chart = ChartFactory.createBarChart3D("Vital Signs","Vital Signs","Values", dataset,PlotOrientation.VERTICAL,true, true, true);
+             
+             //JFreeChart chart = ChartFactory.createStackedBarChart("Vital Signs","Vital Signs","Values", dataset,PlotOrientation.VERTICAL,false, true, true);
+             //JFreeChart chart = ChartFactory.createStackedBarChart("Vital Signs","Vital Signs","Values", dataset,PlotOrientation.VERTICAL,false, true, true);
+             CategoryPlot P = chart.getCategoryPlot();
+             P.setRangeGridlinePaint(Color.BLACK);
+                    
+             //PiePlot P = (PiePlot)chart.getCategoryPlot();
+             
+             ChartFrame frame  = new ChartFrame("Bar Charts",chart);
+             frame.setVisible(true);
+             frame.setSize(450, 500);
+                     
+             
+    }//GEN-LAST:event_btnViewBarsActionPerformed
+
  public void resetFields(){
         txtHeartRate.setText("");
         txtSystolicBloodPressure.setText("");
         txtRespiratoryRate.setText("");
         txtWeight.setText("");
-      }
+      }     
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddMoreVitalSign;
     private javax.swing.JButton btnBackToPS;
     private javax.swing.JButton btnDeleteVitalSign;
-    private javax.swing.JButton btnViewVitalSign;
+    private javax.swing.JButton btnUpdateVitalSign;
+    private javax.swing.JButton btnViewBars;
+    private javax.swing.JButton btnViewPieChart;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblCreate;
