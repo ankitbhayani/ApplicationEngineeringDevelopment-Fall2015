@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<StoreList>
+	<Store>
+		<name>s1</name>
+		<location>Boston</location>
+	</Store>
+	<Store>
+		<name>s2</name>
+		<location>NY</location>
+	</Store>
+	<Store>
+		<name>s3</name>
+		<location>Waltham</location>
+	</Store>	
+</StoreList>

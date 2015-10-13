@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ManufacturerList>
+	<Manufacturer>
+		<name>Pfizer</name>
+	</Manufacturer>
+	<Manufacturer>
+		<name>Ranbaxy</name>
+	</Manufacturer>
+	<Manufacturer>
+		<name>Cipla</name>
+	</Manufacturer>	
+</ManufacturerList>
