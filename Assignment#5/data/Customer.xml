@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<CustomerList>
+	<Customer>
+		<customerName>Josh Radnor</customerName>
+	</Customer>
+	<Customer>
+		<customerName>Ted Mosby</customerName>
+	</Customer>
+	<Customer>
+		<customerName>Marshall Eriksen</customerName>
+	</Customer>	
+	<Customer>
+		<customerName>Lily Aldrin</customerName>
+	</Customer>
+	<Customer>
+		<customerName>Robin Scherbatsky</customerName>
+	</Customer>
+	<Customer>
+		<customerName>Barney Stinson</customerName>
+	</Customer>	
+	<Customer>
+		<customerName>Joey Tribbiani</customerName>
+	</Customer>
+	<Customer>
+		<customerName>Ross Geller</customerName>
+	</Customer>	
+	<Customer>
+		<customerName>Sheldon Cooper</customerName>
+	</Customer>
+	<Customer>
+		<customerName>Cristin Milioti</customerName>
+	</Customer>	
+</CustomerList>

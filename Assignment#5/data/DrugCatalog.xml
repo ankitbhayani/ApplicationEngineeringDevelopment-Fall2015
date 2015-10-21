@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<DrugCatalog>
+<Pfizer>
+	<Drug>
+		<name>d1</name>
+		<price>120</price>
+		<quantity>50</quantity>
+		<expirydate>1/6/2016</expirydate>
+	</Drug>
+	<Drug>
+		<name>d2</name>
+		<price>140</price>
+		<quantity>80</quantity>
+		<expirydate>5/12/2018</expirydate>		
+	</Drug>
+	<Drug>
+		<name>d3</name>
+		<price>160</price>
+		<quantity>75</quantity>
+		<expirydate>7/24/2017</expirydate>
+	</Drug>	
+</Pfizer>
+<Ranbaxy>
+	<Drug>
+		<name>r1</name>
+		<price>60</price>
+		<quantity>50</quantity>
+		<expirydate>1/6/2019</expirydate>
+	</Drug>
+	<Drug>
+		<name>r2</name>
+		<price>80</price>
+		<quantity>25</quantity>
+		<expirydate>5/12/2020</expirydate>		
+	</Drug>
+	<Drug>
+		<name>r3</name>
+		<price>100</price>
+		<quantity>75</quantity>
+		<expirydate>7/24/2021</expirydate>
+	</Drug>	
+</Ranbaxy>
+</DrugCatalog>

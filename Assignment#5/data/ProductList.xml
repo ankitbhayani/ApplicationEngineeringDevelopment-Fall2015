@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<ProductList>
+	<Product>
+		<prodName>Phaser 7500</prodName>
+		<description>Office Printer Phaser</description>
+		<floorPrice>2300</floorPrice>
+		<targetPrice>2399.99</targetPrice>
+		<ceilingPrice>2500</ceilingPrice>
+		<avail>125</avail>
+	</Product>
+	<Product>
+		<prodName>Work Center 3615</prodName>
+		<description>MultiFunction all-in-one Printer</description>
+		<floorPrice>800</floorPrice>
+		<targetPrice>899</targetPrice>
+		<ceilingPrice>999</ceilingPrice>
+		<avail>150</avail>
+	</Product>
+	<Product>
+		<prodName>Xerox Nuvera</prodName>
+		<description>Production Printers and Digital Press</description>
+		<floorPrice>15000</floorPrice>
+		<targetPrice>17000</targetPrice>
+		<ceilingPrice>19000</ceilingPrice>
+		<avail>115</avail>
+	</Product>	
+	<Product>
+		<prodName>Impika</prodName>
+		<description>Continuous Feed Printers</description>
+		<floorPrice>25000</floorPrice>
+		<targetPrice>26000</targetPrice>
+		<ceilingPrice>27000</ceilingPrice>
+		<avail>110</avail>
+	</Product>
+	<Product>
+		<prodName>IJP 2000</prodName>
+		<description>Wide Format Printers</description>
+		<floorPrice>12000</floorPrice>
+		<targetPrice>15000</targetPrice>
+		<ceilingPrice>16000</ceilingPrice>
+		<avail>315</avail>
+	</Product>		
+	<Product>
+		<prodName>Documate 4790</prodName>
+		<description>Departmental and Production Scanner</description>
+		<floorPrice>5300</floorPrice>
+		<targetPrice>5495</targetPrice>
+		<ceilingPrice>5700</ceilingPrice>
+		<avail>515</avail>
+	</Product>	
+	<Product>
+		<prodName>Documate 4440</prodName>
+		<description>Desktop and Workgroup Scanner</description>
+		<floorPrice>645</floorPrice>
+		<targetPrice>695</targetPrice>
+		<ceilingPrice>745</ceilingPrice>
+		<avail>501</avail>
+	</Product>	
+	<Product>
+		<prodName>Xerox Mobile Scanner</prodName>
+		<description>Mobile Scanner</description>
+		<floorPrice>200</floorPrice>
+		<targetPrice>249.99</targetPrice>
+		<ceilingPrice>350</ceilingPrice>
+		<avail>1215</avail>
+	</Product>	
+</ProductList>

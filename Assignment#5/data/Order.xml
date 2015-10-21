@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Orders>
+	<Order1>
+		<OrderItem>
+			<pname>IJP 2000</pname>
+			<quantity>2</quantity>
+			<salesprice>15000</salesprice>
+		</OrderItem>
+		<OrderItem>
+			<pname>Impika</pname>
+			<quantity>12</quantity>
+			<salesprice>25000</salesprice>
+		</OrderItem>
+		<OrderItem>
+			<pname>Xerox Mobile Scanner</pname>
+			<quantity>5</quantity>
+			<salesprice>250</salesprice>
+		</OrderItem>	
+		<Other>
+			<dateOrdered>2014-12-23</dateOrdered>
+			<customer>Josh Radnor</customer>
+			<salesperson>Ankit Bhayani</salesperson>
+		</Other>
+	</Order1>
+</Orders>	
