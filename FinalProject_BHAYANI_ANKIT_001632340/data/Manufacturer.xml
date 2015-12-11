@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ManufacturerList>
+	<Manufacturer>
+		<name>Pfizer</name>
+		<city>Texas</city>
+	</Manufacturer>
+	<Manufacturer>
+		<name>Ranbaxy</name>
+		<city>Mumbai</city>
+	</Manufacturer>
+	<Manufacturer>
+		<name>Cipla</name>
+		<city>Amsterdam</city>
+	</Manufacturer>	
+</ManufacturerList>

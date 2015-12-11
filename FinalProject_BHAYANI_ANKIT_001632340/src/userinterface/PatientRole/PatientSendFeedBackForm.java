@@ -1,0 +1,383 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package userinterface.PatientRole;
+
+
+import Business.Drug.Drug;
+import Business.EcoSystem;
+import Business.Enterprise.DrugAdministrationEnterprise;
+import Business.Enterprise.DrugManufacturerEnterprise;
+import Business.Enterprise.Enterprise;
+import Business.IndividualUser.Doctor;
+import Business.IndividualUser.Manufacturer;
+import Business.IndividualUser.Patient;
+import Business.Network.Network;
+import Business.Orders.Order;
+import Business.Orders.OrderItem;
+import Business.Organization.DoctorOrganization;
+import Business.Organization.Organization;
+import Business.Organization.PatientOrganization;
+import Business.UserAccount.UserAccount;
+import Business.Utils.MyAlphanumericVerifier;
+import Business.Utils.MyStringVerifier;
+import Business.VitalSigns.VitalSign;
+import Business.WorkQueue.GetDiagnosisWorkRequest;
+import Business.WorkQueue.InspectionRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Ankit Bhayani
+ */
+public class PatientSendFeedBackForm extends javax.swing.JPanel {
+
+    
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Patient patient;
+    private Doctor doc;
+    private PatientOrganization patientOrganization;
+    private Enterprise enterprise;
+    private Enterprise docUAenterprise;
+    private EcoSystem ecoSystem;
+    private VitalSign vs;
+    private DoctorOrganization doctorOrganization;
+    private UserAccount docUA =null; 
+    private Drug selectedDrug;
+    
+    /**
+     * Creates new form CreateUserAccountJPanel
+     */
+    public PatientSendFeedBackForm(JPanel pnl, UserAccount ua, Organization o, Enterprise e, EcoSystem es) {
+        initComponents();
+        this.userProcessContainer = pnl;
+        this.userAccount = ua;
+        this.patientOrganization = (PatientOrganization)o;
+        this.enterprise = e;
+        this.ecoSystem = es;
+        this.patient= (Patient)ua.getEmployee();
+        populateDrug();
+        populateRequestTable();
+        MyAlphanumericVerifier myStringVerifier = new MyAlphanumericVerifier();
+        txtProblemExperience.setInputVerifier(myStringVerifier);
+        //cityJTextField1.setInputVerifier(myStringVerifier);
+        //deleteWorkRequests();
+        
+    }
+    
+    public void deleteWorkRequests(){
+        
+        int l =userAccount.getWorkQueue().getWorkRequestList().size();
+            while(l!=0) {
+                userAccount.getWorkQueue().getWorkRequestList().remove(l-1);
+                l--;
+            }
+            JOptionPane.showMessageDialog(null, userAccount.getWorkQueue().getWorkRequestList());
+            
+    }
+    
+    
+        
+    public void populateRequestTable(){
+        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+            if(request instanceof InspectionRequest){
+                Object[] row = new Object[6];
+                //row[0] = request;
+                row[0] = ((InspectionRequest)request).getDrug();
+                row[1] = request.getRequestDate();
+                row[2] = ((InspectionRequest)request).getDrugManufacturerEnterprise();
+                row[3] = ((InspectionRequest)request).getProblemExperienced();
+                row[4] = request.getStatus();
+                String result = ((InspectionRequest) request).getTestResult();
+                row[5] = result == null ? "Waiting" : result;
+                
+                //row[4] = request.getStatus();
+                model.addRow(row);
+            }
+        }
+    }
+    
+    
+
+    public void populateDrug(){
+        
+        //Drug d[] = new Drug[100];
+        
+        cmbDrugName.removeAllItems();
+        //cmbDrugName.addItem("Please select a Drug");
+        for(Order o: patient.getPatientDrugOrders().getOrders()){
+            for(OrderItem oi : o.getOrderItems()){
+                //JOptionPane.showMessageDialog(null, "Storing Values "+ oi.getDrug());
+                //d[i]=oi.getDrug();
+                cmbDrugName.addItem(oi.getDrug());
+                //JOptionPane.showMessageDialog(null, "Manufacturer Name "+ oi.getDrug().getManufacturerName());
+            }
+        }
+        
+        
+        //cmbDrugName.addItem(oi.getDrug());
+        
+    }
+    
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtDrugManufacturer = new javax.swing.JTextField();
+        cmbDrugName = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        btnBackUA = new javax.swing.JButton();
+        btnSendFeedback = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtDrugExpiryDate = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtProblemExperience = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        workRequestJTable = new javax.swing.JTable();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel1.setText("Problems/Experience");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, 20));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel2.setText("Drug Manufacturer");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 20));
+
+        jLabel4.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jLabel4.setText("Send Feedback about Drug");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        txtDrugManufacturer.setEditable(false);
+        txtDrugManufacturer.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        add(txtDrugManufacturer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 220, 20));
+
+        cmbDrugName.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        cmbDrugName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbDrugName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDrugNameActionPerformed(evt);
+            }
+        });
+        add(cmbDrugName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 220, 20));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel3.setText("Drug Name");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 20));
+
+        btnBackUA.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnBackUA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/backButton.png"))); // NOI18N
+        btnBackUA.setText("Back");
+        btnBackUA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackUAActionPerformed(evt);
+            }
+        });
+        add(btnBackUA, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
+
+        btnSendFeedback.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnSendFeedback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/PatientRole/reportButton.png"))); // NOI18N
+        btnSendFeedback.setText("Report");
+        btnSendFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendFeedbackActionPerformed(evt);
+            }
+        });
+        add(btnSendFeedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel6.setText("Drug Expiry Date");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 20));
+
+        txtDrugExpiryDate.setEditable(false);
+        txtDrugExpiryDate.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        add(txtDrugExpiryDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 220, 20));
+
+        txtProblemExperience.setColumns(20);
+        txtProblemExperience.setRows(5);
+        jScrollPane1.setViewportView(txtProblemExperience);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 300, 100));
+
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Inspection Requests", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 14), new java.awt.Color(0, 153, 0))); // NOI18N
+
+        workRequestJTable.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Drug", "Request Time", "Manufacturer", "Problems", "Status", "Result"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        workRequestJTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                workRequestJTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(workRequestJTable);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 810, 170));
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSendFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendFeedbackActionPerformed
+
+        Drug d = (Drug) cmbDrugName.getSelectedItem();
+        String prob = txtProblemExperience.getText();
+        String mfg =  txtDrugManufacturer.getText();
+        
+        if(prob.isEmpty() || prob.startsWith(" ")){
+            JOptionPane.showMessageDialog(null, "Enter the problems experienced with this drug!");
+            return;
+        }
+        
+        for(WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()){
+            if(wr instanceof InspectionRequest){
+                if(d.equals(((InspectionRequest)wr).getDrug())){
+                    JOptionPane.showMessageDialog(null, "Already Reported");    
+                //return;
+                }
+            }    
+        }
+        
+     
+        InspectionRequest request = new InspectionRequest();
+        Date date = new Date();
+
+        request.setSender(userAccount);
+        request.setMessage("InspectionRequest");
+        request.setStatus("Sent");
+        request.setPatient(patient);
+        request.setRequestDate(date);
+        request.setProblemExperienced(prob);
+        
+        //JOptionPane.showMessageDialog(null, d.getManufacturerName());
+        //JOptionPane.showMessageDialog(null, mfg);
+        
+        DrugManufacturerEnterprise dme=null;
+        DrugAdministrationEnterprise dae=null;
+        for(Network n: ecoSystem.getNetworkList()){
+            for(Enterprise ep: n.getEnterpriseDirectory().getEnterpriseList()){
+                if(ep instanceof DrugManufacturerEnterprise){
+                    if(ep.getName().equalsIgnoreCase(mfg)){
+                        dme =(DrugManufacturerEnterprise)ep;
+                        //JOptionPane.showMessageDialog(null, "Found!" + dme.getName());
+                        //break;
+                    }
+                }
+                else if (ep instanceof DrugAdministrationEnterprise){
+                    dae=(DrugAdministrationEnterprise)ep;
+                }
+            }
+        }
+        
+        
+        if(dme!=null && dae!=null){
+            request.setDrugManufacturerEnterprise(dme);
+            request.setDrug(selectedDrug);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            dme.getWorkQueue().getWorkRequestList().add(request);
+            dae.getWorkQueue().getWorkRequestList().add(request);
+            JOptionPane.showMessageDialog(null, dae.getName());
+            JOptionPane.showMessageDialog(null, "Inspection request sent succesfully!");
+            txtProblemExperience.setText("");
+            populateRequestTable();
+        }
+                   
+    }//GEN-LAST:event_btnSendFeedbackActionPerformed
+
+    
+
+    
+    private void btnBackUAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackUAActionPerformed
+        //muajp.refreshTable();
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
+    }//GEN-LAST:event_btnBackUAActionPerformed
+
+    private void cmbDrugNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDrugNameActionPerformed
+
+        //JOptionPane.showMessageDialog(null, " Action Trigger ");
+                
+        selectedDrug = (Drug) cmbDrugName.getSelectedItem();
+        
+        //JOptionPane.showMessageDialog(null, " Pata nahi " + d.getDrugName() + " " + d.getExpiryDate());
+        if (selectedDrug != null){
+            txtDrugManufacturer.setText(selectedDrug.getManufacturerName());
+            txtDrugExpiryDate.setText(selectedDrug.getExpiryDate());
+        }
+        /*else{
+            lblStatus.setText("You have not consumed any drugs so far, no items to report");
+        }*/
+        
+    }//GEN-LAST:event_cmbDrugNameActionPerformed
+
+    private void workRequestJTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_workRequestJTableMouseClicked
+
+        
+    }//GEN-LAST:event_workRequestJTableMouseClicked
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackUA;
+    private javax.swing.JButton btnSendFeedback;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox cmbDrugName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField txtDrugExpiryDate;
+    private javax.swing.JTextField txtDrugManufacturer;
+    private javax.swing.JTextArea txtProblemExperience;
+    private javax.swing.JTable workRequestJTable;
+    // End of variables declaration//GEN-END:variables
+}
